@@ -1,0 +1,80 @@
+[gd_scene load_steps=5 format=3 uid="uid://bcda8he1nisbe"]
+
+[ext_resource type="Script" path="res://Menus/matching.gd" id="1_bnl5m"]
+[ext_resource type="Theme" uid="uid://d1ne5yktwj0f3" path="res://UI/Main.tres" id="2_um0bi"]
+
+[sub_resource type="Gradient" id="Gradient_rd3kl"]
+colors = PackedColorArray(0.12, 0.069, 0.03, 1, 0.23, 0.1541, 0.092, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gl6ln"]
+gradient = SubResource("Gradient_rd3kl")
+fill_from = Vector2(0.504587, 1)
+fill_to = Vector2(0.477064, 0)
+
+[node name="Matching" type="Node2D"]
+script = ExtResource("1_bnl5m")
+
+[node name="Canvas" type="CanvasLayer" parent="."]
+
+[node name="Background" type="TextureRect" parent="Canvas"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_gl6ln")
+
+[node name="Margin" type="MarginContainer" parent="Canvas"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 160
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 100
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Canvas/Margin"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Canvas/Margin/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("2_um0bi")
+theme_override_colors/font_color = Color(0.82, 0.82, 0.82, 1)
+theme_override_colors/font_shadow_color = Color(0.44, 0.44, 0.44, 1)
+theme_override_constants/shadow_offset_x = 6
+theme_override_constants/shadow_offset_y = 6
+theme_override_constants/shadow_outline_size = 0
+theme_override_font_sizes/font_size = 105
+text = "Matching"
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 162
+
+[node name="Code" type="Label" parent="Canvas/Margin/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("2_um0bi")
+theme_override_colors/font_color = Color(0.819608, 0.819608, 0.819608, 1)
+theme_override_font_sizes/font_size = 63
+text = "XXX.XX.X.XX"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Options" type="VBoxContainer" parent="Canvas/Margin/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Return" type="Button" parent="Canvas/Margin/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource("2_um0bi")
+text = "Exit Matchmaking"
+
+[connection signal="pressed" from="Canvas/Margin/VBoxContainer/Return" to="." method="_on_return_pressed"]

@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://dorsvwg3soi84"]
+
+[ext_resource type="Script" path="res://System/system.gd" id="1_ocrhb"]
+[ext_resource type="Script" path="res://System/multiplayer.gd" id="2_f5glo"]
+
+[node name="System" type="Node2D"]
+script = ExtResource("1_ocrhb")
+starting_address = "res://Menus/home.tscn"
+
+[node name="Canvas" type="CanvasLayer" parent="."]
+layer = 128
+
+[node name="Cover" type="ColorRect" parent="Canvas"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MP_mgr" type="Node" parent="."]
+script = ExtResource("2_f5glo")
+
+[connection signal="connection_failed" from="MP_mgr" to="." method="_on_mp_mgr_connection_failed"]
+[connection signal="player_connected" from="MP_mgr" to="." method="_on_mp_mgr_player_connected"]
+[connection signal="player_disconnected" from="MP_mgr" to="." method="_on_mp_mgr_player_disconnected"]
+[connection signal="server_disconnected" from="MP_mgr" to="." method="_on_mp_mgr_server_disconnected"]
