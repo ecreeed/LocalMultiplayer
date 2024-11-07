@@ -10,6 +10,9 @@ size = Vector2(126, 127)
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
 properties/0/replication_mode = 1
+properties/1/path = NodePath(".:modulate")
+properties/1/spawn = true
+properties/1/replication_mode = 1
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_pvcsu")
@@ -23,3 +26,12 @@ texture = ExtResource("1_4a7d0")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_b4nd6")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.03
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

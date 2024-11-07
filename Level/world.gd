@@ -15,10 +15,10 @@ func host_game() -> void:
 	peer.create_server(135)
 	multiplayer.multiplayer_peer = peer
 	multiplayer.peer_connected.connect(_add_player)
-	_add_player()
+	_add_player(1)
 	print(IP.resolve_hostname(str(OS.get_environment("COMPUTERNAME")),1))
 	
-func _add_player(id: int = 1) -> void:
+func _add_player(id: int) -> void:
 	var player = player_scene.instantiate()
 	player.name = str(id)
 	call_deferred("add_child",player)

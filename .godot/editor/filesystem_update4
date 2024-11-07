@@ -2,3 +2,5 @@ res://System/system.tscn
 res://Menus/home.tscn
 res://Level/world.tscn
 res://Level/player.tscn
+res://Level/world.gd
+res://Level/player.gd
