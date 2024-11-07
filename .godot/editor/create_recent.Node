@@ -1,0 +1,7 @@
+TextEdit
+Button
+MultiplayerSynchronizer
+MultiplayerSpawner
+Sprite2D
+CollisionShape2D
+CharacterBody2D

@@ -1,105 +1,68 @@
-[gd_scene load_steps=5 format=3 uid="uid://bry45olxwfuv4"]
+[gd_scene load_steps=2 format=3 uid="uid://bry45olxwfuv4"]
 
 [ext_resource type="Script" path="res://Menus/home.gd" id="1_vu0v7"]
-[ext_resource type="Theme" uid="uid://d1ne5yktwj0f3" path="res://UI/Main.tres" id="2_ygq2d"]
-
-[sub_resource type="Gradient" id="Gradient_7ener"]
-colors = PackedColorArray(0.12, 0.069, 0.03, 1, 0.23, 0.1541, 0.092, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_eppt2"]
-gradient = SubResource("Gradient_7ener")
-fill_from = Vector2(0.504587, 1)
-fill_to = Vector2(0.477064, 0)
 
 [node name="Home" type="Node2D"]
 script = ExtResource("1_vu0v7")
 
 [node name="Canvas" type="CanvasLayer" parent="."]
 
-[node name="Background" type="TextureRect" parent="Canvas"]
+[node name="ColorRect" type="ColorRect" parent="Canvas"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("GradientTexture2D_eppt2")
+color = Color(0.214103, 0.214103, 0.214103, 1)
 
-[node name="Margin" type="MarginContainer" parent="Canvas"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="Title" type="Label" parent="Canvas"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 100
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 100
-metadata/_edit_use_anchors_ = true
+text = "LAN Demo"
 
-[node name="Title" type="Label" parent="Canvas/Margin"]
-layout_mode = 2
-size_flags_vertical = 2
-theme = ExtResource("2_ygq2d")
-theme_override_colors/font_color = Color(0.82, 0.82, 0.82, 1)
-theme_override_colors/font_shadow_color = Color(0.44, 0.44, 0.44, 1)
-theme_override_constants/shadow_offset_x = 6
-theme_override_constants/shadow_offset_y = 6
-theme_override_constants/shadow_outline_size = 0
-theme_override_font_sizes/font_size = 126
-text = "Runic"
-horizontal_alignment = 1
-vertical_alignment = 1
-justification_flags = 162
+[node name="Host" type="Button" parent="Canvas"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.0
+offset_top = 29.0
+offset_right = 31.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Host Game"
 
-[node name="Game" type="VBoxContainer" parent="Canvas/Margin"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 6
+[node name="Join" type="Button" parent="Canvas"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.5
+offset_top = 80.0
+offset_right = 43.5
+offset_bottom = 111.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Join Game"
 
-[node name="Host" type="Button" parent="Canvas/Margin/Game"]
-layout_mode = 2
-theme = ExtResource("2_ygq2d")
-text = "Host"
-
-[node name="Join" type="HBoxContainer" parent="Canvas/Margin/Game"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 2
-
-[node name="Code" type="TextEdit" parent="Canvas/Margin/Game/Join"]
-custom_minimum_size = Vector2(290, 0)
-layout_mode = 2
-theme = ExtResource("2_ygq2d")
+[node name="TextEdit" type="TextEdit" parent="Canvas"]
+offset_left = 360.0
+offset_top = 403.0
+offset_right = 525.0
+offset_bottom = 437.0
 placeholder_text = "IP"
-autowrap_mode = 1
 
-[node name="Confirm" type="Button" parent="Canvas/Margin/Game/Join"]
-layout_mode = 2
-theme = ExtResource("2_ygq2d")
-text = "Confirm"
-
-[node name="Meta" type="HBoxContainer" parent="Canvas/Margin"]
-layout_mode = 2
-size_flags_vertical = 8
-alignment = 1
-
-[node name="Settings" type="Button" parent="Canvas/Margin/Meta"]
-layout_mode = 2
-size_flags_horizontal = 6
-theme = ExtResource("2_ygq2d")
-text = "Settings"
-
-[node name="Store" type="Button" parent="Canvas/Margin/Meta"]
-layout_mode = 2
-size_flags_horizontal = 6
-theme = ExtResource("2_ygq2d")
-text = "Store"
-
-[node name="Button" type="Button" parent="Canvas/Margin/Meta"]
-layout_mode = 2
-theme = ExtResource("2_ygq2d")
-text = "Deck"
-
-[connection signal="pressed" from="Canvas/Margin/Game/Host" to="." method="_on_host_pressed"]
-[connection signal="pressed" from="Canvas/Margin/Game/Join/Confirm" to="." method="_on_confirm_pressed"]
-[connection signal="pressed" from="Canvas/Margin/Meta/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Canvas/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="Canvas/Join" to="." method="_on_join_pressed"]
